@@ -96,12 +96,10 @@ if st.button("Generar PDF"):
     pdf.cell(0, 10, f"Costo con 7% adicional: ${costo_total * 1.07:.2f}", ln=True)
 
     # Exportar PDF
-    output = BytesIO()
-    pdf.output(output, 'S')
-    st.success("✅ PDF generado con éxito.")
-    st.download_button(
-        label="📄 Descargar PDF",
-        data=output.getvalue(),
-        file_name="cortes_aluminio.pdf",
-        mime="application/pdf"
-    )
+    pdf_bytes = pdf.output(dest='S').encode('latin1')
+st.download_button(
+    label="📄 Descargar PDF",
+    data=pdf_bytes,
+    file_name="cortes_aluminio.pdf",
+    mime="application/pdf"
+)
