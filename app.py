@@ -97,7 +97,7 @@ if st.button("Generar PDF"):
 
     # Exportar PDF
     output = BytesIO()
-    pdf.output(output)
+    pdf.output(output, 'S')
     st.success("✅ PDF generado con éxito.")
     st.download_button(
         label="📄 Descargar PDF",
